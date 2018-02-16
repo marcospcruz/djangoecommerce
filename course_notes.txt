@@ -1,0 +1,4 @@
+1 - criando o projeto django-admin startproject <nome projeto> .
+2 - rodando o projeto: python manage.py runserver <mask ip:porta *opcional exemplo 0.0.0.0:80
+3 - alterar configurações da app: settings.py
+4 - criando a aplicação. Neste caso será criada uma aplicação base (master): python manage.py startapp core
