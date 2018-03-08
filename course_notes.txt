@@ -1,4 +1,25 @@
 1 - criando o projeto django-admin startproject <nome projeto> .
-2 - rodando o projeto: python manage.py runserver <mask ip:porta *opcional exemplo 0.0.0.0:80
+2 - rodando o projeto: python manage.py runserver <mask ip:porta *opcional exemplo 0.0.0.0:80>
 3 - alterar configurações da app: settings.py
 4 - criando a aplicação. Neste caso será criada uma aplicação base (master): python manage.py startapp core
+5 - templates: criado dir templates dentro da aplicação core e criado um arquivo index.html
+6 - em views.py, alterei o retorno da response:
+exemplo:
+def index(request):
+	#return HttpResponse('Hello World!!!')
+	return render(request,'index.html')
+7 - marcação especial de renderização de variaveis {{valor}}
+	marcação especial para template tags, para mudar o fluxo da pagina
+	também temos filtros para formartar as saidas. Instruções após o pipe. exemplo: {{ title|capFirst }} #capitulizou a primeira letra da string
+8 - criando contexto para a marcacao de renderização. Em views.py:
+def index(request):
+	#return HttpResponse('Hello World!!!')
+	context = {
+		'title':'Django E-commerce Rendered Title'
+	}
+	return render(request,'index.html',context)
+9 - configurando a parte estática do aplicativo.
+	não se utiliza django para servir parte estática.
+		1 - Em settings.py, definir a url do arquivo estatico. Para mais de uma pasta de estaticos fora a default, definir uma lista STATICFILES_DIRS
+		STATICFILES_DIR = [os.path.join.(BASE_DIR,'staticfiles')]
+10 - replicando templates com herança. Criar um template base e depois criar os auxiliares herdando da base
